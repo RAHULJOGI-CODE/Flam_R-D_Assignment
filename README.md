@@ -1,4 +1,4 @@
-# Parametric Curve Fitting - Flamapp Assignment
+<img width="3569" height="1881" alt="fit_plot" src="https://github.com/user-attachments/assets/adee807b-16ef-4674-8380-4d745c66400c" /># Parametric Curve Fitting - Flamapp Assignment
 
 ## 📋 Problem Overview
 
@@ -31,6 +31,9 @@ y(t) = 42 + t*sin(θ) + exp(M*|t|) * sin(0.3*t) * cos(θ)
 - **X**: = 54.998521
 
 - **Final L1 Loss** = 0.013360
+
+[Uploading fit_plot.png…]()
+
 
 ### Objective
 
