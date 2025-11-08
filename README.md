@@ -20,6 +20,18 @@ y(t) = 42 + t*sin(θ) + exp(M*|t|) * sin(0.3*t) * cos(θ)
 - **X**: 0 < X < 100 (x-offset parameter)
 - **t**: 6 < t < 60 (parameter range)
 
+
+
+### RESULTS:
+
+- **θ (theta)**: = 29.999646 degrees
+
+- **M**: = 0.030001
+
+- **X**: = 54.998521
+
+- **Final L1 Loss** = 0.013360
+
 ### Objective
 
 Minimize the **L1 loss**:
