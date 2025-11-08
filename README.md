@@ -1,5 +1,3 @@
-<img width="3569" height="1881" alt="fit_plot" src="https://github.com/user-attachments/assets/adee807b-16ef-4674-8380-4d745c66400c" /># Parametric Curve Fitting - Flamapp Assignment
-
 ## 📋 Problem Overview
 
 This project solves a parametric curve fitting problem where we need to find optimal parameters (θ, M, X) that minimize the L1 distance between predicted and observed points.
@@ -32,7 +30,7 @@ y(t) = 42 + t*sin(θ) + exp(M*|t|) * sin(0.3*t) * cos(θ)
 
 - **Final L1 Loss** = 0.013360
 
-[Uploading fit_plot.png…]()
+<img width="2769" height="1771" alt="fit_plot" src="https://github.com/user-attachments/assets/adee807b-16ef-4674-8380-4d745c66400c" /># 
 
 
 ### Objective
