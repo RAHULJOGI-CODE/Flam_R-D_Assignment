@@ -1,0 +1,13 @@
+— Optimization Complete —
+
+θ = 29.999646 degrees
+
+M = 0.030001
+
+X = 54.998521
+
+Final L1 Loss = 0.013360
+
+LaTeX submission:
+
+(t*cos(29.999646) - e^{0.030001*|t|}*sin(0.3t)*sin(29.999646) + 54.998521, 42 + t*sin(29.999646) + e^{0.030001*|t|}*sin(0.3t)*cos(29.999646))
