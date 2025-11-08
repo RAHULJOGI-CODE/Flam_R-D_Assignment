@@ -56,7 +56,7 @@ pip install numpy pandas scipy matplotlib
 ```
 FLAM/
 ├── xy_data.csv              # Observed x,y data points
-├── curve_fitting.py         # Main entry point script
+├── main.py         # Main entry point script
 ├── CurveFitting.py          # Main orchestration class
 ├── Data_Loader.py           # Data loading class
 ├── ParametricModel.py       # Parametric model class
@@ -78,74 +78,19 @@ FLAM/
 Run the optimization script:
 
 ```bash
-python curve_fitting.py
+python main.py
 ```
 
 Or with Python 3:
 
 ```bash
-python3 curve_fitting.py
+python3 main.py
 ```
 
 ### Advanced Usage (Using Classes Directly)
 
 You can also use the classes directly for more control:
 
-```python
-from CurveFitting import CurveFitting
-
-# Create curve fitting instance
-curve_fitter = CurveFitting(
-    csv_path='xy_data.csv',
-    t_min=6.0,
-    t_max=60.0,
-    seed=42,
-    verbose=True
-)
-
-# Run optimization
-theta, m, x, loss = curve_fitter.run(
-    use_refinement=True,
-    de_maxiter=500,
-    de_popsize=10,
-    de_tol=1e-4
-)
-
-# Get results
-results = curve_fitter.get_results()
-print(results['latex_string'])
-
-# Get comprehensive summary
-summary = curve_fitter.get_summary()
-print(summary)
-
-# Plot optimization history
-curve_fitter.plot_optimization_history('optimization_history.png')
-```
-
-### Using Individual Classes
-
-You can also use individual classes for custom workflows:
-
-```python
-from Data_Loader import DataLoader
-from ParametricModel import ParametricModel
-from LossFunction import L1Loss
-from Optimizer import Optimizer
-
-# Load data
-loader = DataLoader('xy_data.csv')
-x_obs, y_obs, n_points = loader.load()
-x_obs, y_obs, t_values = loader.get_data()
-
-# Create model and loss
-model = ParametricModel(y_offset=42.0, frequency=0.3)
-loss = L1Loss(model)
-
-# Optimize
-optimizer = Optimizer(model, loss, seed=42)
-theta, m, x, final_loss = optimizer.optimize(t_values, x_obs, y_obs)
-```
 
 ## 🏗️ Architecture
 
@@ -216,7 +161,7 @@ The codebase uses a **modular class-based architecture** for better organization
     - Uses `scipy.optimize.differential_evolution` for global parameter search
     - Handles the non-convex nature of the problem and avoids local minima
   
-  - **Step 2: Refinement (Optional)**
+  - **Step 2: Refinement **
     - Refines results using `scipy.optimize.least_squares` with `loss='soft_l1'`
     - Provides more robust fitting and handles potential outliers
 
@@ -248,46 +193,13 @@ After running the script, you will get:
    - Visualization of the fit
    - Residuals analysis
 
-## 🔍 Key Features
-
-- **Modular Class-Based Design**: Clean separation of concerns with dedicated classes
-- **Object-Oriented Architecture**: Easy to extend and maintain
-- **Error Handling**: Comprehensive error handling for missing files and edge cases
-- **Robust Optimization**: Two-stage optimization for better convergence
-- **Comprehensive Visualization**: Multiple plots for analysis
-- **Optimization History Tracking**: Track parameter evolution during optimization
-- **Scientific Best Practices**: Well-documented code with docstrings and type hints
-- **Configurable**: Easy to customize optimization parameters and model settings
 
 ## 📈 Optimization Details
 
 ### Differential Evolution
 - Population-based global optimizer
 - Suitable for non-convex, multi-modal problems
-- Parameters:
-  - `maxiter=500`: Maximum iterations
-  - `popsize=10`: Population size
-  - `tol=1e-4`: Tolerance for convergence
 
-### Least Squares Refinement
-- Local refinement of global solution
-- Uses soft L1 loss for robustness
-- Trust Region Reflective algorithm (TRF)
-
-## 🧪 Testing
-
-The script includes error handling for:
-- Missing CSV file
-- Invalid data formats
-- Out-of-range parameters
-- NaN results
-
-## 📝 Notes
-
-- The optimization may take several minutes depending on the number of data points
-- Results are reproducible (seed=42 for differential evolution)
-- The script assumes t values are uniformly distributed between 6 and 60
-- All parameters are constrained within their specified bounds during optimization
 
 ## 🎯 Results Format
 
@@ -306,11 +218,4 @@ LaTeX submission:
  42 + t*sin(<θ>) + e^{<M>*|t|}*sin(0.3t)*cos(<θ>))
 ```
 
-## 👤 Author
-
-Created for Flamapp Research and Development / AI Assignment
-
-## 📄 License
-
-This project is created for assignment purposes.
 
